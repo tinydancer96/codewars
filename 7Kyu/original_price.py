@@ -9,20 +9,13 @@
 
 def discover_original_price(discounted_price, sale_percentage):
     try:
+        original_price = float(discounted_price) / (1 - float(sale_percentage) / 100)
+
         if discounted_price is None or sale_percentage is None:
             raise TypeError
-        original_price = float(discounted_price) / (1 - float(sale_percentage) / 100)
-        print("{:.2f}".format(round(original_price)))
+
+        return round(original_price)
     except ValueError:
-        print("ValueError")
+        pass
     except TypeError:
-        print("TypeError")
-
-
-discover_original_price(75,25)
-discover_original_price(25,75)
-discover_original_price(75.75,25)
-discover_original_price(373.85,11.2)
-discover_original_price(458.2,17.13)
-discover_original_price("hello",17.13)
-discover_original_price("", 17.13)
+        pass
